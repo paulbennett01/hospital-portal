@@ -34,60 +34,55 @@ db.connect((err) => {
   }
 });
 
-// Login route
+// Log in route
 router.post('/', (req, res) => {
-  const { hospital_number, password } = req.body; 
-  // Extract hospital_number and password from the request body
+  const { hospital_number, password } = req.body;
 
-  const query = 'SELECT * FROM users WHERE hospital_number = ?'; 
-  // SQL query to find a user by their hospital_number
+  console.log("Request Body:", req.body);  // Log the data sent by frontend
 
+  const query = 'SELECT * FROM users WHERE hospital_number = ?';
   db.query(query, [hospital_number], async (err, result) => {
     if (err) {
-      return res.status(500).json({ message: 'Database error' }); 
-      // Return a 500 status with an error message if there's a database issue
+      console.error('Database error:', err);
+      return res.status(500).json({ message: 'Database error' });
     }
 
     if (result.length === 0) {
-      return res.status(404).json({ message: 'User not found' }); 
-      // Return a 404 status if no user is found with the given hospital_number
+      console.log('No user found for hospital_number:', hospital_number);  // Log if no user found
+      return res.status(404).json({ message: 'User not found' });
     }
 
-    const user = result[0]; 
-    // Extract the user data (assuming one user per hospital_number)
+    const user = result[0];
+    console.log("User data from database:", user);  // Log user data from the database
 
-    const isMatch = await bcrypt.compare(password, user.password); 
-    // Compare the provided password with the hashed password in the database
+    const isMatch = await bcrypt.compare(password, user.password);
+    console.log("Password match result:", isMatch);  // Log if password matched
 
     if (isMatch) {
-      const department = departments.find((dept) => dept.id === user.department_id); 
-      // Find the department details based on the user's department_id
-      
-      const departmentData = department || { name: 'Unknown', details: 'No details available' }; 
-      // Use default values if the department is not found
+      const department = departments.find((dept) => dept.id === Number(user.department_id)) || { name: 'Unknown', details: 'No details available' };
+      console.log("Department data:", department);  // Log the department data
 
       // Remove the password from the user object for security
-      const { password, ...userWithoutPassword } = user; 
+      const { password, ...userWithoutPassword } = user;
 
-      // Prepare the response data by merging user details and department information
-      const responseData = {
-        ...userWithoutPassword,
-        ...departmentData,
-      };
+      const responseData = { ...userWithoutPassword, ...department };
 
-      // Log the response data in the backend for debugging purposes
-      console.log('Response Data (Backend):', responseData);
+      console.log('Response Data:', responseData);  // Log the response data
 
+      if (isMatch) {
+        console.log("Sending successful response");
       return res.status(200).json({
-        message: 'Login successful', 
-        user: responseData, // Return user data along with department information
+        message: 'Login successful',
+        user: responseData,
       });
     } else {
-      return res.status(401).json({ message: 'Invalid credentials' }); 
-      // Return a 401 status if the password comparison fails
+      console.log('Password mismatch for user:', hospital_number);  // Log if password does not match
+      return res.status(401).json({ message: 'Invalid credentials' });
     }
+  }
   });
 });
+
 
 // Export the router
 module.exports = router; 

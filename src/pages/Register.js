@@ -28,6 +28,7 @@ function Register() {
     hospital_number: '',
     email: '',
     department_id: '',
+    dob:'',
     telephone_number: '',
     password: '',
     confirm_password: '',
@@ -121,7 +122,7 @@ function Register() {
               onChange={handleChange}
             />
           </div>
-          {/* <div>
+          <div>
             <label className="text-gray-600 text-sm mb-2 block">Date of Birth</label>
             <input
               name="dob"
@@ -131,7 +132,7 @@ function Register() {
               value={formData.dob}
               onChange={handleChange}
             />
-          </div> */}
+          </div>
           <div>
             <label className="text-gray-600 text-sm mb-2 block">Hospital Number</label>
             <input
