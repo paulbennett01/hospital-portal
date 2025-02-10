@@ -86,6 +86,7 @@ function Register() {
   };
 
   return (
+   
     <div className="max-w-4xl max-sm:max-w-lg mx-auto font-[sans-serif] p-6">
       <div className="text-center mb-12 sm:mb-16">
         <a href="javascript:void(0)">
@@ -97,7 +98,8 @@ function Register() {
         </a>
         <h4 className="text-gray-600 text-base mt-6">Sign up to access the hospital portal</h4>
       </div>
-
+      
+      <div className ="container-register">
       <form>
         <div className="grid sm:grid-cols-2 gap-6">
           <div>
@@ -209,13 +211,14 @@ function Register() {
         <div className="sm:!mt-12 mt-6">
           <button
             type="button"
-            className="mx-auto block py-3 px-6 text-sm tracking-wider rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
+            className="submit-register-button"
             onClick={handleSubmit}
           >
             Sign up
           </button>
         </div>
       </form>
+    </div>
     </div>
   );
 }

@@ -1,3 +1,6 @@
+body {
+  background: linear-gradient(to right, #1D45C7, #27ACA1); /* Gradient from one color to another */
+}
 .App {
   text-align: center;
 }
@@ -28,6 +31,41 @@
   color: #61dafb;
 }
 
+.welcometext{
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  margin-top: 5px;
+}
+
+
+.container-register {
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  border-width: 7px;
+  border-style: solid; /* Ensure the border is solid */
+  border-image: linear-gradient(to bottom, #27ACA1, #218B2D) 1; /* Use one gradient for the border */
+  border-radius: 20px;
+  background: linear-gradient(to right, #1B459F, #148061); /* Gradient background */
+  padding: 20px; /* Optional: Adds spacing inside the container */
+  
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: black;
+}
+.submit-register-button {
+  padding: 10px 20px;
+  background: linear-gradient(to right, #AAEFC9, #2F1299);
+  border-width: 7px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, #AAEFC9, #2F1299) 1;
+  border-radius: 20px;
+  display: block;
+  text-align: center; /* Center the text */
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

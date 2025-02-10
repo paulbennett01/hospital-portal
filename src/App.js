@@ -6,6 +6,8 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Slideshow from './components/Slideshow'; // Import the Slideshow component
+import Home from './pages/Home';  // Assuming you have a Home component
+
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,10 +37,16 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />} />
             <Route path="/slideshow" element={isLoggedIn ? <Slideshow /> : <Navigate to="/login" />} />
+            <Route path="/" element={<Navigate to="/home" />} />  {/* Redirect to /home */}
+           <Route path="/home" element={<Home />} />
+            <Route path="*" element={<App />} />  {/* Default route */}
           </Routes>
         </main>
-      </Router>
+      </Router> 
+  
     </>
+    
+   
   );
 }
 

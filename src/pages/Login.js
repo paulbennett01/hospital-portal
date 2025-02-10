@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../App.css';
 import axios from 'axios';
+
+
 
 function Login({ setIsLoggedIn }) { // setIsLoggedIn comes from props here
   const [hospitalNumber, setHospitalNumber] = useState('');
@@ -55,16 +58,13 @@ function Login({ setIsLoggedIn }) { // setIsLoggedIn comes from props here
     }
   };
 
-  return (
+  return (  
+  <div className="min-h-screen flex flex-col items-center justify-center py-6 px-4">
     <div className="bg-gray-50 font-[sans-serif]">
-      <div className="min-h-screen flex flex-col items-center justify-center py-6 px-4">
+    
         <div className="max-w-md w-full">
           <a href="javascript:void(0)">
-            <img
-              src="https://readymadeui.com/readymadeui.svg"
-              alt="logo"
-              className="w-40 mb-8 mx-auto block"
-            />
+         
           </a>
           <div className="p-8 rounded-2xl bg-white shadow">
             <h2 className="text-gray-800 text-center text-2xl font-bold">Sign in</h2>
