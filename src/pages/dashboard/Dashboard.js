@@ -24,7 +24,7 @@ const Dashboard = () => {
   <div class="font-[sans-serif] my-4">
             <div class="max-w-5xl max-lg:max-w-2xl mx-auto">
                 <div class="max-w-2xl mx-auto text-center">
-                    <h2 class="text-gray-800 text-4xl font-extrabold">Welcome, {userData.firstNameName} {userData.surname}!
+                    <h2 class="text-gray-800 text-4xl font-extrabold">Welcome, {userData.FirstName} {userData.surname}!
                     </h2>
                     <p class="text-gray-600 text-sm mt-4 leading-relaxed">Welcome to your hospital portal! We're so happy you're here. This is your special space where you can find everything you need to know about your health and your visits. You’ll be able to see all your important details, explore fun activities, and get ready for your next adventure at the hospital. We're here to help you every step of the way—let's make sure you feel comfortable and excited!</p>
                 </div>
@@ -34,7 +34,7 @@ const Dashboard = () => {
                             <img src="/assets/images/account.png" class="w-full h-60 object-contain object-top bg-gray-200" />
                         </Link>
                         <div class="p-4">
-                            <h4 class="text-gray-800 text-base font-bold">{userData.firstName}'s Details</h4>
+                            <h4 class="text-gray-800 text-base font-bold">{userData.FirstName}'s Details</h4>
                             <div class="mt-4">
                                 <p class="text-gray-600 text-sm leading-relaxed">By clicking the image above, you'll be able to view all your personal details and find out important information about the department you'll be visiting. You'll get to learn more about the team, the services they provide, and what to expect during your visit. It's a great way to prepare and feel confident about your upcoming appointment!</p>
                             </div>
@@ -75,7 +75,7 @@ const Dashboard = () => {
                         <div class="p-4">
                             <h4 class="text-gray-800 text-base font-bold">GAMES</h4>
                             <div class="mt-4">
-                                <p class="text-gray-600 text-sm leading-relaxed">{userData.firstName}, click above to go our exciting Fun Zone! Once you're there, you'll be able to play cool games, explore fun activities, and enjoy lots of entertainment. It's a great place to relax, have some fun, and discover new things—all while having a blast!</p>
+                                <p class="text-gray-600 text-sm leading-relaxed">{userData.FirstName}, click above to go our exciting Fun Zone! Once you're there, you'll be able to play cool games, explore fun activities, and enjoy lots of entertainment. It's a great place to relax, have some fun, and discover new things—all while having a blast!</p>
                             </div>
 
                             <div class="space-x-4 mt-4">

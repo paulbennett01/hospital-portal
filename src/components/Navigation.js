@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Navigation = ({ isLoggedIn }) => {
+const Navigation = ({ isLoggedIn, handleLogout }) => {
+  const navigate = useNavigate();
+
   return (
     <header className="shadow-md font-sans tracking-wide relative z-50">
       <div className="flex flex-wrap items-center justify-between gap-4 px-10 py-4 bg-white min-h-[70px]">
@@ -31,7 +33,6 @@ const Navigation = ({ isLoggedIn }) => {
 
           <ul className="lg:flex lg:gap-x-5 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
             {isLoggedIn ? (
-              // For logged-in users
               <>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
                   <Link
@@ -43,15 +44,26 @@ const Navigation = ({ isLoggedIn }) => {
                 </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
                   <Link
-                    to="/login"
+                    to="/slideshow"
+                    className="hover:text-[#007bff] text-[#007bff] block font-bold text-[15px]"
+                  >
+                    Get to Know the Hospital
+                  </Link>
+                </li>
+                {/* Logout Button */}
+                <li className="max-lg:border-b max-lg:py-3 px-3">
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      navigate("/login"); // Redirect to login page after logout
+                    }}
                     className="hover:text-[#007bff] text-[#007bff] block font-bold text-[15px]"
                   >
                     Logout
-                  </Link>
+                  </button>
                 </li>
               </>
             ) : (
-              // For non-logged-in users
               <>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
                   <Link
