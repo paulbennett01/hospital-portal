@@ -59,38 +59,38 @@ function Login({ setIsLoggedIn }) { // setIsLoggedIn comes from props here
   };
 
   return (  
-  <div className="min-h-screen flex flex-col items-center justify-center py-6 px-4">
-    <div className="bg-gray-50 font-[sans-serif]">
+  <div className="login">
+    <div className="login2">
     
-        <div className="max-w-md w-full">
+        <div className="loginarea1">
           <a href="javascript:void(0)">
          
           </a>
-          <div className="p-8 rounded-2xl bg-white shadow">
-            <h2 className="text-gray-800 text-center text-2xl font-bold">Sign in</h2>
-            <form className="mt-8 space-y-4" onSubmit={handleSubmit}>
-              <label className="text-gray-800 text-sm mb-2 block">
+          <div className="login3">
+            <h2 className="signintext">Sign in</h2>
+            <form className="hospitalnumber" onSubmit={handleSubmit}>
+              <label className="inputhospitalnumber">
                 Hospital Number
                 <input
                   type="text"
                   value={hospitalNumber}
                   onChange={(e) => setHospitalNumber(e.target.value)}
-                  className="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
+                  className="hospitalnumberbox"
                   required
                 />
               </label>
-              <label className="text-gray-800 text-sm mb-2 block">
+              <label className="password">
                 Password:
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
+                  className="passwordbox"
                   required
                 />
               </label>
               {error && <div>{error}</div>}
-              <button type="submit">Login</button>
+              <button type="submit" className='loginbutton'>Login</button>
             </form>
           </div>
         </div>

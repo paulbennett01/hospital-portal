@@ -208,7 +208,8 @@ function Register() {
           </div>
         </div>
 
-        <div className="sm:!mt-12 mt-6">
+     
+       <div className='button-wrapper'>
           <button
             type="button"
             className="submit-register-button"
@@ -220,6 +221,7 @@ function Register() {
       </form>
     </div>
     </div>
+  
   );
 }
 
