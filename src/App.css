@@ -112,6 +112,51 @@ body {
 
 }
 
+/* Container for personal details */
+.personal-details-container {
+  padding: 16px;
+  background: linear-gradient(#2047A9, #218B2D);
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title for Personal Details */
+.personal-details-title {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* Styling for each detail item */
+.personal-details .detail-item {
+  color: #f5f5f5;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* Medical Info Container */
+.medical-info-container {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #ffffff;
+  
+}
+
+/* Medical Info Title */
+.medical-info-title {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* Medical Info Items */
+.medical-info-item {
+  color: #ffffff;
+  font-size: 14px;
+}
+
 /* Centering .login2 with border gradient */
 .login2 {
   border-radius: 32px;

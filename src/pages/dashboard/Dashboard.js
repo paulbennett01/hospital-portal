@@ -31,7 +31,7 @@ const Dashboard = () => {
   return (
     <>
       <main className='dashboard'>
-        <div className='flex flex-col flex-wrap items-center justify-evenly'>
+        <div className='welcome-heading'>
           <div className='font-[sans-serif] my-4'>
             <div className='max-w-5xl max-lg:max-w-2xl mx-auto'>
               <div className='max-w-2xl mx-auto text-center'>
@@ -44,21 +44,18 @@ const Dashboard = () => {
               </div>
               <div className='grid lg:grid-cols-2 md:grid-cols-2 gap-8 justify-center mt-12'>
                 <div className='border rounded-md overflow-hidden max-md:max-w-[300px]'>
-                  <Link to='/account'>
-                    <img src='/assets/images/account.png' className='w-full h-60 object-contain object-top bg-gray-200' />
-                  </Link>
-                  <div className='p-4'>
-                    <h4 className='text-gray-800 text-base font-bold'>{userData.FirstName}'s Details</h4>
-                    <div className='mt-4'>
-                      <p className='text-gray-600 text-sm'><strong>Phone Number:</strong> {userData.telephone_number}</p>
-                      <p className='text-gray-600 text-sm'><strong>Email Address:</strong> {userData.email}</p>
-                      <p className='text-gray-600 text-sm'><strong>Date Of Birth:</strong> {userData.dob}</p>
-                    </div>
-                    <div className='mt-4'>
-                      <h5 className='text-gray-800 text-lg font-bold'>Medical Info</h5>
-                      <p className='text-gray-600 text-sm'><strong>Department:</strong> {departmentName || 'Unknown'}</p>
-                    </div>
-                  </div>
+                <div className='personal-details-container'>
+  <h4 className='personal-details-title'>Personal Details</h4>
+  <div className='personal-details'>
+    <p className='detail-item'><strong>Phone Number:</strong> {userData.telephone_number}</p>
+    <p className='detail-item'><strong>Email Address:</strong> {userData.email}</p>
+    <p className='detail-item'><strong>Date Of Birth:</strong> {userData.dob}</p>
+  </div>
+  <div className='medical-info-container'>
+    <h5 className='medical-info-title'>Medical Info</h5>
+    <p className='medical-info-item'><strong>Department:</strong> {departmentName || 'Unknown'}</p>
+  </div>
+</div>
                 </div>
               </div>
             </div>
