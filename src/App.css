@@ -108,17 +108,38 @@ body {
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   min-height: 100vh; /* Ensure it takes up the full height */
+  width: 100%;
 
 }
 
-/* Wrapper for the login content */
+/* Centering .login2 with border gradient */
 .login2 {
-  background: linear-gradient(to bottom,#1B459F, #218B2D);
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 32px;
   padding: 30px;
+  
   width: 100%;
-  max-width: 400px; /* Limit the width of the form */
+  max-width: 626px;
+  max-height: 502px;  /* Slightly increased for better spacing */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  /* Adding the border gradient */
+  border: 10px solid transparent; 
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  background-image: linear-gradient(#218B2D, #1B459F), 
+                    linear-gradient(45deg, #0ECC1B, #093D24);
+  position: relative;
+}
+
+/* Adjust form area inside */
+.login3 {
+  width: 100%;
+  max-width: 350px;
 }
 
 /* Heading text for Sign In */
@@ -127,18 +148,10 @@ body {
   font-weight: bold;
   text-align: center;
   margin-bottom: 20px;
-  color: #ffffff; /* Dark text color */
+  color: #ffffff;
 }
 
-/* Styling for the form labels */
-label {
-  display: block;
-  margin: 10px 0 5px;
-  font-size: 16px;
-  color: #333;
-}
-
-/* Input field styling for Hospital Number and Password */
+/* Input field styling */
 input[type="text"],
 input[type="password"] {
   width: 100%;
@@ -147,35 +160,30 @@ input[type="password"] {
   border: 2px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
-  box-sizing: border-box; /* Ensures padding is inside the width */
-}
-
-/* Error message styling (if any error occurs) */
-div {
-  color: red;
-  font-size: 14px;
-  margin-top: 10px;
-  text-align: center;
+  box-sizing: border-box;
 }
 
 /* Button styling */
 .loginbutton {
-  width: 100%;
-  padding: 12px;
-  margin-top: 20px;
-  background-color: #4CAF50; /* Green background */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
+  padding: 10px 20px; /* Button padding */
+  background: linear-gradient(to right, #AAEFC9, #2F1299); /* Gradient background for the button */
+  border: 7px solid transparent; /* Transparent border to show the gradient border */
+  border-radius: 50px; /* Round the button and border */
+  background-clip: padding-box; /* Ensures the background doesn't overlap with the border */
+  text-align: center;
+  display: block; /* Makes the button block-level for centering */
+  color: white; /* Text color */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer on hover */
+  outline: none; /* Removes focus outline */
+  width: fit-content; /* Ensures the button adjusts to the width of its content */
+  margin: 0 auto; /* Centers the button horizontally within the wrapper */
+  transition: transform 0.3s ease; /* Optional smooth transition effect */
 }
 
-button:hover {
-  background-color: #45a049; /* Darker green on hover */
+.loginbutton:hover {
+  background-color: #45a049;
 }
-
 
 @keyframes App-logo-spin {
   from {

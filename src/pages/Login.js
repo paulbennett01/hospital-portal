@@ -58,9 +58,10 @@ function Login({ setIsLoggedIn }) { // setIsLoggedIn comes from props here
     }
   };
 
-  return (  
-  <div className="login">
-    <div className="login2">
+  return (   <div className="login">
+  <div className="login2">
+  
+   
     
         <div className="loginarea1">
           <a href="javascript:void(0)">
@@ -90,7 +91,9 @@ function Login({ setIsLoggedIn }) { // setIsLoggedIn comes from props here
                 />
               </label>
               {error && <div>{error}</div>}
+              <div className='button-wrapper'>
               <button type="submit" className='loginbutton'>Login</button>
+              </div>
             </form>
           </div>
         </div>
