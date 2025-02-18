@@ -42,8 +42,6 @@ const Dashboard = () => {
                   Welcome to your hospital portal! We're so happy you're here...
                 </p>
               </div>
-              <div className='grid lg:grid-cols-2 md:grid-cols-2 gap-8 justify-center mt-12'>
-                <div className='border rounded-md overflow-hidden max-md:max-w-[300px]'>
                 <div className='personal-details-container'>
   <h4 className='personal-details-title'>Personal Details</h4>
   <div className='personal-details'>
@@ -56,8 +54,6 @@ const Dashboard = () => {
     <p className='medical-info-item'><strong>Department:</strong> {departmentName || 'Unknown'}</p>
   </div>
 </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
