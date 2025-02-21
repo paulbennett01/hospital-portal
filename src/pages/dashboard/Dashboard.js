@@ -1,28 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
-// Import departments data (Assuming it's stored locally in /assets/data)
+import { useNavigate } from 'react-router-dom';
 import departments from './departments.json';
 
-const Dashboard = () => {
+const Dashboard = ({ handleLogout }) => {
   const [userData, setUserData] = useState(null);
-  const [departmentName, setDepartmentName] = useState('');
+  const [departmentInfo, setDepartmentInfo] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Retrieve user data from localStorage
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
       setUserData(parsedUser);
 
-
-      // Find the department name using department_id
+      // Find department info
       const department = departments.find(dep => dep.id === Number(parsedUser.department_id));
       if (department) {
-        setDepartmentName(department.name);
+        setDepartmentInfo(department);
       }
     }
   }, []);
+
+  const handleSignOut = () => {
+    handleLogout();
+    navigate('/login');
+  };
 
   if (!userData) {
     return <div>Loading...</div>;
@@ -42,18 +44,48 @@ const Dashboard = () => {
                   Welcome to your hospital portal! We're so happy you're here...
                 </p>
               </div>
-                <div className='personal-details-container'>
-  <h4 className='personal-details-title'>Personal Details</h4>
-  <div className='personal-details'>
-    <p className='detail-item'><strong>Phone Number:</strong> {userData.telephone_number}</p>
-    <p className='detail-item'><strong>Email Address:</strong> {userData.email}</p>
-    <p className='detail-item'><strong>Date Of Birth:</strong> {userData.dob}</p>
-  </div>
-  <div className='medical-info-container'>
-    <h5 className='medical-info-title'>Medical Info</h5>
-    <p className='medical-info-item'><strong>Department:</strong> {departmentName || 'Unknown'}</p>
-  </div>
-</div>
+              
+              <div className='personal-details-container'>
+                <h4 className='personal-details-title'>Personal Details</h4>
+                <div className='personal-details'>
+                  <p className='detail-item'><strong>Phone Number:</strong> {userData.telephone_number}</p>
+                  <p className='detail-item'><strong>Email Address:</strong> {userData.email}</p>
+                  <p className='detail-item'><strong>Date Of Birth:</strong> {userData.dob}</p>
+                </div>
+
+                <div className='medical-info-container'>
+                  <h5 className='medical-info-title'>Medical Info</h5>
+                  <p className='medical-info-item'><strong>Department:</strong> {departmentInfo ? departmentInfo.name : 'Unknown'}</p>
+
+                  {/* Department Details Section */}
+                  {departmentInfo && (
+                    <div className=''>
+                      
+
+                        {/* Doctor Info */}
+                        
+                      
+                          <p className='medical-info-item'><strong>Doctor:</strong> {departmentInfo.doctor}</p>
+                        
+
+                        {/* Nurse Info */}
+                        
+                          <p className='medical-info-item'><strong>Nurse:</strong> {departmentInfo.nurse}</p>
+                          <p className='medical-info-item'><strong>About:</strong> {departmentInfo.details}</p>
+                      
+                      </div>
+                    
+                  )}
+
+                  {/* Sign Out Button */}
+                  <button 
+                    onClick={handleSignOut} 
+                    className='mt-6 bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition duration-300'
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
