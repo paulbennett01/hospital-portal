@@ -45,8 +45,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `FirstName`, `surname`, `email`, `department_id`, `telephone_number`, `password`, `created_at`, `hospital_number`, `dob`) VALUES
-('', 'e', 'e', '20342779@myclyde.ac.uk', '1', '2147483647', '$2b$10$6PvbbDrGpEHvRD1/IdFpLehmV7XDEFo88Y3O8hkC9i6jrPYqScWdC', '0000-00-00 00:00:00', 'ch200', '1111-11-11'),
-('', 'Rick', 'Astley', 'rickastley@gmail.com', '1', '01419933845', '$2b$10$HNeKabhHRFeWq/oIKoBc9uuCgOoHqGfJoNgZnA48M1LglBA.QCXdS', '2025-02-03 10:17:22', 'CH500', '1988-11-11');
+('', 'Dodge', 'Rover', 'dodgerover@gmail.com', '1', '2147483647', '$2b$10$6PvbbDrGpEHvRD1/IdFpLehmV7XDEFo88Y3O8hkC9i6jrPYqScWdC', '0000-00-00 00:00:00', 'ch200', '1111-11-11'),
+('', 'Rick', 'Astley', 'rickastley@gmail.com', '2', '01419933845', '$2b$10$HNeKabhHRFeWq/oIKoBc9uuCgOoHqGfJoNgZnA48M1LglBA.QCXdS', '2025-02-03 10:17:22', 'CH500', '1988-11-11');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
