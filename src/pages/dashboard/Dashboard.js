@@ -55,7 +55,7 @@ const Dashboard = ({ handleLogout }) => {
 
                 <div className='medical-info-container'>
                   <h5 className='medical-info-title'>Medical Info</h5>
-                  <p className='medical-info-item'><strong>Department:</strong> {departmentInfo ? departmentInfo.name : 'Unknown'}</p>
+                  <p className='medical-info-item'><strong>You are coming to:</strong> {departmentInfo ? departmentInfo.name : 'Unknown'}</p>
 
                   {/* Department Details Section */}
                   {departmentInfo && (
