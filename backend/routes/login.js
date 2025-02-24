@@ -13,6 +13,12 @@ const departments = JSON.parse(
   fs.readFileSync(path.join(__dirname, 'json', 'departments.json'), 'utf-8')
 ); 
 // Synchronously read and parse the contents of departments.json file into a JavaScript object
+// Load departments.json
+
+const games = JSON.parse(
+  fs.readFileSync(path.join(__dirname, 'json', 'games.json'), 'utf-8')
+); 
+// Synchronously read and parse the contents of games.json file into a JavaScript object
 
 // Create a MySQL connection
 const db = mysql.createConnection({
