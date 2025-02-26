@@ -265,6 +265,46 @@ height: 50%;
 width: 50%;
 margin: auto;
 }
+.available-games-heading {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.gameName {
+text-align: center;
+}
+.playGameButton {
+  padding: 10px 20px; /* Button padding */
+  background: linear-gradient(to right, #558614, #0e817c); /* Gradient background for the button */
+  border: 7px solid transparent; /* Transparent border to show the gradient border */
+  border-radius: 50px; /* Round the button and border */
+  background-clip: padding-box; /* Ensures the background doesn't overlap with the border */
+  text-align: center;
+  display: block; /* Makes the button block-level for centering */
+  color: white; /* Text color */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer on hover */
+  outline: none; /* Removes focus outline */
+  width: fit-content; /* Ensures the button adjusts to the width of its content */
+  margin: 0 auto; /* Centers the button horizontally within the wrapper */
+  transition: transform 0.3s ease; /* Optional smooth transition effect */
+}
+
+.games-border {
+  border-radius: 303px;
+  height: 50%;
+  width: 67%;
+  margin: auto;
+  border: 10px solid transparent; 
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  background-image: linear-gradient(#17bd1f, #04fff2), 
+                    linear-gradient(45deg, #d3d606, #093D24);
+  position: relative;
+  top: 172px;
+}
+
 
 @keyframes App-logo-spin {
   from {

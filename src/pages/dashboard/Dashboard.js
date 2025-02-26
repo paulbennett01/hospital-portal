@@ -96,7 +96,7 @@ const Dashboard = ({ handleLogout }) => {
                 {/* Sign Out Button */}
                 <button 
                   onClick={handleSignOut} 
-                  className="mt-6 bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition duration-300"
+                  className="signout-button-dashboard"
                 >
                   Sign Out
                 </button>

@@ -77,8 +77,8 @@ const Games = () => {
 
   return (
     <div>
-      <h1>Available Games</h1>
-
+      <h1 className="available-games-heading">Available Games. Your age is {userAge}!</h1>
+      
       {userAge === null ? (
         <p>Loading...</p>
       ) : filteredGames.length === 0 ? (
@@ -86,11 +86,16 @@ const Games = () => {
       ) : (
         filteredGames.map((game) => (
           <div key={game.id}>
-            <h2>{game.name}</h2>
-            <p>{game.details}</p>
-            <a href={game.game_url} target="_blank" rel="noopener noreferrer">
-              Play {game.name}
-            </a>
+            <div className="games-border">
+              <h2 className="gameName">{game.name}</h2>
+              <img className="image" src={game.game_img} alt={`Image of ${game.name}`} />
+              <button
+                onClick={() => window.open(game.game_url, '_blank', 'noopener noreferrer')}
+                className="playGameButton"
+              >
+                Play {game.name}
+              </button>
+            </div>
           </div>
         ))
       )}
