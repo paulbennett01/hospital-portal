@@ -31,30 +31,7 @@ const Dashboard = ({ handleLogout }) => {
     return <div>Loading...</div>;
   }
 
-  // Calculate days until the user's next birthday
-  const calculateDaysUntilBirthday = (dob) => {
-    const today = new Date();
-    const birthDate = new Date(dob);
-
-    // Set the next birthday's date (month/day stays the same, year might change)
-    const nextBirthday = new Date(
-      today.getFullYear(),
-      birthDate.getMonth(),
-      birthDate.getDate()
-    );
-
-    // If the birthday this year has passed, use the next year
-    if (today > nextBirthday) {
-      nextBirthday.setFullYear(today.getFullYear() + 1);
-    }
-
-    // Calculate the difference in time (milliseconds) and convert to days
-    const timeDiff = nextBirthday - today;
-    const daysUntilBirthday = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-
-    return daysUntilBirthday;
-  };
-
+  // Calculate the user's age
   const calculateAge = (dob) => {
     const today = new Date();
     const birthDate = new Date(dob);
@@ -62,14 +39,12 @@ const Dashboard = ({ handleLogout }) => {
     const month = today.getMonth();
     const day = today.getDate();
 
-    // Adjust age if the birthday hasn't happened yet this year
     if (month < birthDate.getMonth() || (month === birthDate.getMonth() && day < birthDate.getDate())) {
       age--;
     }
     return age;
   };
 
-  const daysUntilBirthday = calculateDaysUntilBirthday(userData.dob);
   const userAge = calculateAge(userData.dob);
 
   const formattedDOB = new Date(userData.dob).toLocaleDateString('en-US', {

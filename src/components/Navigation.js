@@ -52,7 +52,7 @@ const Navigation = ({ isLoggedIn, handleLogout }) => {
                 </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
                   <Link
-                    to="/Games"
+                    to="/games"
                     className="hover:text-[#007bff] text-[#007bff] block font-bold text-[15px]"
                   >
                    Games
