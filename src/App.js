@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import Slideshow from './components/Slideshow'; // Import the Slideshow component
 import Home from './pages/Home';  // Assuming you have a Home component
 import Games from './pages/Games';
+import Videos from './pages/Videos';
 
 
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={isLoggedIn ? <Dashboard handleLogout={handleLogout} /> : <Navigate to="/login" />} />
             <Route path="/slideshow" element={isLoggedIn ? <Slideshow /> : <Navigate to="/login" />} />
+            <Route path="/videos" element={isLoggedIn ? <Videos /> : <Navigate to="/login" />} />
             <Route path="/games" element={isLoggedIn ? <Games /> : <Navigate to="/login" />} />
             <Route path="/" element={<Navigate to="/home" />} />  {/* Redirect to /home */}
            <Route path="/home" element={<Home />} />

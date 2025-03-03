@@ -89,7 +89,8 @@ const Dashboard = ({ handleLogout }) => {
 
                     {/* Nurse Info */}
                     <p className="medical-info-item"><strong>Nurse:</strong> {departmentInfo.nurse}</p>
-                    <p className="medical-info-item"><strong>About:</strong> {departmentInfo.details}</p>
+                    <p className="medical-info-item"><strong>About This Department:</strong></p>
+                    <p className='department-info'>{departmentInfo.details}</p>
                   </div>
                 )}
 

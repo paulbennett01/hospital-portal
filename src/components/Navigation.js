@@ -1,22 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navigation = ({ isLoggedIn, handleLogout }) => {
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false); // State to control menu visibility
 
   return (
-    <header className="shadow-md font-sans tracking-wide relative z-50">
-      <div className="flex flex-wrap items-center justify-between gap-4 px-10 py-4 bg-white min-h-[70px]">
-        <Link to="/">
-          <img alt="logo" className="w-36" src="https://readymadeui.com/readymadeui.svg" />
-        </Link>
-
+    <header className="navbar">
+      <div className="navbar2">
+        {/* Navigation Menu */}
         <div
           id="collapseMenu"
-          className="max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50"
+          className={`${
+            menuOpen ? "max-lg:block" : "max-lg:hidden"
+          } lg:!block max-lg:fixed max-lg:bg-black max-lg:opacity-50 max-lg:inset-0 max-lg:z-50`}
         >
+          {/* Close Button */}
           <button
             id="toggleClose"
+            onClick={() => setMenuOpen(false)}
             className="lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white w-9 h-9 flex items-center justify-center border"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 fill-black" viewBox="0 0 320.591 320.591">
@@ -31,42 +33,29 @@ const Navigation = ({ isLoggedIn, handleLogout }) => {
             </svg>
           </button>
 
-          <ul className="lg:flex lg:gap-x-5 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
-            {isLoggedIn ? (
+          {/* Menu Links */}
+          <ul className="menu-list flex gap-5 lg:flex-row flex-col w-full text-center">
+          {isLoggedIn ? (
               <>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
-                  <Link
-                    to="/dashboard"
-                    className="hover:text-[#007bff] text-[#007bff] block font-bold text-[15px]"
-                  >
-                    Dashboard
-                  </Link>
+                  <Link to="/dashboard" className="link">Dashboard</Link>
                 </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
-                  <Link
-                    to="/slideshow"
-                    className="hover:text-[#007bff] text-[#007bff] block font-bold text-[15px]"
-                  >
-                    Get to Know the Hospital
-                  </Link>
+                  <Link to="/slideshow" className="link">Get to Know the Hospital</Link>
                 </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
-                  <Link
-                    to="/games"
-                    className="hover:text-[#007bff] text-[#007bff] block font-bold text-[15px]"
-                  >
-                   Games
-                  </Link>
-                  
+                  <Link to="/games" className="link">Games</Link>
                 </li>
-                {/* Logout Button */}
+                <li className="max-lg:border-b max-lg:py-3 px-3">
+                  <Link to="/videos" className="link">Videos</Link>
+                </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
                   <button
                     onClick={() => {
                       handleLogout();
-                      navigate("/login"); // Redirect to login page after logout
+                      navigate("/login");
                     }}
-                    className="hover:text-[#007bff] text-[#007bff] block font-bold text-[15px]"
+                    className="link"
                   >
                     Logout
                   </button>
@@ -75,29 +64,20 @@ const Navigation = ({ isLoggedIn, handleLogout }) => {
             ) : (
               <>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
-                  <Link
-                    to="/login"
-                    className="hover:text-[#007bff] text-[#007bff] block font-bold text-[15px]"
-                  >
-                    Login
-                  </Link>
+                  <Link to="/login" className="link">Login</Link>
                 </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
-                  <Link
-                    to="/register"
-                    className="hover:text-[#007bff] text-[#007bff] block font-bold text-[15px]"
-                  >
-                    Register
-                  </Link>
+                  <Link to="/register" className="link">Register</Link>
                 </li>
               </>
             )}
           </ul>
         </div>
 
+        {/* Open Menu Button */}
         <div className="flex max-lg:ml-auto">
-          <button id="toggleOpen" className="lg:hidden">
-            <svg className="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <button id="toggleOpen" onClick={() => setMenuOpen(true)} className="lg:hidden">
+            <svg className="w-7 h-7" fill="white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
                 d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"

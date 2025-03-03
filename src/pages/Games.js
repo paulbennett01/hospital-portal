@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
+import hangmanImage from "../images/Hangman.webp"; // Importing the image if inside src/
+import SpotDifferenceImage from "../images/spot-the-difference.webp"; // Importing the image if inside src/
+import GuessWordImage from "../images/guess-word.webp"; // Importing the image if inside src/
+import MusicNote from "../images/MusicNote.webp"; // Importing the image if inside src/
 
-// Sample games data (usually you will import this)
+
+
+// Sample games data
 const gamesData = [
   {
     id: 1,
     name: "Hangman",
     details: "Hangman is a game.",
-    game_img: "/assets/images/games/hangman",
+    game_img: hangmanImage, // Using imported image
     age_restriction: 8,
     game_url: "https://thewordsearch.com/hangman/",
   },
@@ -14,7 +20,7 @@ const gamesData = [
     id: 2,
     name: "Spot the difference",
     details: "Spot the difference is a game",
-    game_img: "/assets/images/games/food-theif.png",
+    game_img: SpotDifferenceImage, // Using imported image
     age_restriction: 4,
     game_url: "https://www.spotthedifference.com/",
   },
@@ -22,7 +28,7 @@ const gamesData = [
     id: 3,
     name: "Guess the Word",
     details: "Guess the word is a game",
-    game_img: "/assets/images/games/food-theif.png",
+    game_img: GuessWordImage,
     age_restriction: 4,
     game_url: "https://wordly.org/",
   },
@@ -30,26 +36,17 @@ const gamesData = [
     id: 4,
     name: "Guess the song lyric",
     details: "Description of the game",
-    game_img: "/assets/images/games/food-theif.png",
+    game_img: MusicNote,
     age_restriction: 8,
     game_url: "https://www.sporcle.com/games/quizzess/guess-the-song-by-the-lyrics",
-  },
-  {
-    id: 5,
-    name: "Food thief",
-    details: "Description of the game",
-    game_img: "/assets/images/games/food-theif.png",
-    age_restriction: 8,
-    game_url: "https://google.com",
-  },
+  }
 ];
 
 const Games = () => {
   const [userAge, setUserAge] = useState(null);
 
-  // Fetch user data and calculate age based on dob
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
+    const storedUser = localStorage.getItem("user");
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
       if (parsedUser.dob) {
@@ -58,7 +55,6 @@ const Games = () => {
     }
   }, []);
 
-  // Function to calculate age from dob
   const calculateAge = (dob) => {
     const today = new Date();
     const birthDate = new Date(dob);
@@ -72,13 +68,12 @@ const Games = () => {
     return age;
   };
 
-  // Filter the games based on the calculated user age
-  const filteredGames = gamesData.filter(game => game.age_restriction <= userAge);
+  const filteredGames = gamesData.filter((game) => game.age_restriction <= userAge);
 
   return (
     <div>
       <h1 className="available-games-heading">Available Games. Your age is {userAge}!</h1>
-      
+
       {userAge === null ? (
         <p>Loading...</p>
       ) : filteredGames.length === 0 ? (
@@ -90,7 +85,7 @@ const Games = () => {
               <h2 className="gameName">{game.name}</h2>
               <img className="image" src={game.game_img} alt={`Image of ${game.name}`} />
               <button
-                onClick={() => window.open(game.game_url, '_blank', 'noopener noreferrer')}
+                onClick={() => window.open(game.game_url, "_blank", "noopener noreferrer")}
                 className="playGameButton"
               >
                 Play {game.name}
