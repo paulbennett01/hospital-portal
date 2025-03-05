@@ -37,6 +37,9 @@ const Navigation = ({ isLoggedIn, handleLogout }) => {
           <ul className="menu-list flex gap-5 lg:flex-row flex-col w-full text-center">
           {isLoggedIn ? (
               <>
+              <li className="max-lg:border-b max-lg:py-3 px-3">
+                  <Link to="/home" className="link">Home</Link>
+                </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
                   <Link to="/dashboard" className="link">Dashboard</Link>
                 </li>
@@ -49,6 +52,7 @@ const Navigation = ({ isLoggedIn, handleLogout }) => {
                 <li className="max-lg:border-b max-lg:py-3 px-3">
                   <Link to="/videos" className="link">Videos</Link>
                 </li>
+                
                 <li className="max-lg:border-b max-lg:py-3 px-3">
                   <button
                     onClick={() => {
@@ -63,12 +67,16 @@ const Navigation = ({ isLoggedIn, handleLogout }) => {
               </>
             ) : (
               <>
+              <li className="max-lg:border-b max-lg:py-3 px-3">
+                  <Link to="/home" className="link">Home</Link>
+                </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
                   <Link to="/login" className="link">Login</Link>
                 </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
                   <Link to="/register" className="link">Register</Link>
                 </li>
+                
               </>
             )}
           </ul>
