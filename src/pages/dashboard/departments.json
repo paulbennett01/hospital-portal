@@ -36,18 +36,5 @@
     "dept_map": "day_surgery_map.jpg",
     "dept_img": ["day_surgery_img1.jpg", "day_surgery_img2.jpg", "day_surgery_img3.jpg"],
     "videos": ["FId7wHAd1Cg?si=X28sg4wONarFmS_Z", "FId7wHAd1Cg?si=X28sg4wONarFmS_Z", "FId7wHAd1Cg?si=X28sg4wONarFmS_Z"]
-  },
-  {
-    "id": 4,
-    "name": "Blood Tests",
-    "details": "The Blood Tests Department is where doctors and nurses take a small sample of your blood to check how healthy you are. Blood tests help find out if everything inside your body is working properly. Our friendly staff will explain everything before they begin, and they use tiny needles that only pinch for a second. You can even choose a colorful bandage afterward! The tests help doctors understand how to keep you feeling your best. It’s quick, safe, and helps us take great care of you!",
-    "doctor": "Doctor Patel",
-    "doctor_img": "blood_tests_doctor.jpg",
-    "nurse": "Nurse Johnson",
-    "nurse_img": "blood_tests_nurse.jpg",
-    "dept_map": "blood_tests_map.jpg",
-    "dept_img": ["blood_tests_img1.jpg", "blood_tests_img2.jpg", "blood_tests_img3.jpg"],
-    "videos": ["FId7wHAd1Cg?si=X28sg4wONarFmS_Z", "FId7wHAd1Cg?si=X28sg4wONarFmS_Z", "FId7wHAd1Cg?si=X28sg4wONarFmS_Z"]
   }
-    
 ]

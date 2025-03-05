@@ -1,5 +1,5 @@
 import react from "react";
-import hospitalMap from "../images/hospital-map.webp";
+import hospitalMap from "../images/hospital-map.png";
 
 
 
