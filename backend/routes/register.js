@@ -29,7 +29,7 @@ db.connect((err) => {
 // POST route to handle user registration
 router.post('/', async (req, res) => {
     // Extract user details from the request body
-    const { firstName, surname, hospital_number, email, department_id, telephone_number, password, dob } = req.body;
+    const { firstName, surname, hospital_number, email, department_id, telephone_number, password, dob, profilePicture } = req.body; // Include profilePicture
 
     try {
         // Hash the user's password before storing it in the database
@@ -38,12 +38,12 @@ router.post('/', async (req, res) => {
 
         // SQL query to insert the user's data into the `users` table
         const query = `
-            INSERT INTO users (firstName, surname, hospital_number, email, department_id, telephone_number, password, dob)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO users (firstName, surname, hospital_number, email, department_id, telephone_number, password, dob, profile_picture)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         `;
 
         // Execute the SQL query, passing the user data as parameters to prevent SQL injection
-        db.query(query, [firstName, surname, hospital_number, email, department_id, telephone_number, hashedPassword, dob], (err, result) => {
+        db.query(query, [firstName, surname, hospital_number, email, department_id, telephone_number, hashedPassword, dob, profilePicture], (err, result) => {            
             if (err) {
                 console.error('Error during registration:', err); 
                 // Log the error if the query fails

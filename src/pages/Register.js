@@ -2,16 +2,34 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+// Function to fetch available profile pictures
+const getAvailableProfilePictures = () => {
+  return [
+    "bicycle.webp",
+    "bmw-suv.webp",
+    "bmw.webp",
+    "cat.webp",
+    "dog.webp",
+    "ferrari.webp",
+    "helicopter.webp",
+    "horse.webp",
+    "land-rover-suv.webp",
+    "lion.webp",
+    "motorcycle.webp",
+    "plane.webp",
+    "truck.webp"
+  ]; // Manually list available images in 'src/images/profile-pictures'
+};
+
 const registerUser = async (userData, navigate) => {
   try {
     const response = await axios.post('http://localhost:5000/register', userData);
 
     if (response.data.token) {
-      localStorage.setItem('token', response.data.token); // Store the JWT
+      localStorage.setItem('token', response.data.token);
     }
 
-    // Navigate to the login page after successful registration
-    navigate('/login');
+    navigate('/login'); // Navigate to login after successful registration
   } catch (error) {
     console.error('Registration error:', error.response?.data || error.message);
     alert('Error during registration. Please try again.');
@@ -19,7 +37,7 @@ const registerUser = async (userData, navigate) => {
 };
 
 function Register() {
-  const navigate = useNavigate(); // Use useNavigate here
+  const navigate = useNavigate();
 
   // State for form inputs
   const [formData, setFormData] = useState({
@@ -28,95 +46,133 @@ function Register() {
     hospital_number: '',
     email: '',
     department_id: '',
-    dob:'',
+    dob: '',
     telephone_number: '',
     password: '',
     confirm_password: '',
+    profilePicture: '', // New state for profile picture selection
   });
 
-  const [departments, setDepartments] = useState([]); // State for department list
+  const [departments, setDepartments] = useState([]);
+  const availableProfilePictures = getAvailableProfilePictures(); // Get list of images
 
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
-        // Fetch department details from the backend
         const response = await axios.get('http://localhost:5000/departments');
-        setDepartments(response.data); // Set departments state
+        setDepartments(response.data);
       } catch (error) {
-        console.error('Error fetching departments:', error.response ? error.response.data : error.message);
-        alert('Error fetching departments. Check console for details.');
+        console.error('Error fetching departments:', error.message);
+        alert('Error fetching departments.');
       }
     };
 
     fetchDepartments();
   }, []);
 
-  // Handle input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
   const handleSubmit = async () => {
-    const { password, confirm_password, ...userData } = formData;
+    if (!formData.profilePicture) {
+      alert("Please select a profile picture.");
+      return;
+    }
 
-    // Validate all fields are filled
+    const { password, confirm_password, ...userData } = formData;
+    
     if (Object.values(formData).some((value) => !value)) {
       alert('Please fill in all fields.');
       return;
     }
 
-    // Validate email format
     if (!/\S+@\S+\.\S+/.test(formData.email)) {
       alert('Please enter a valid email address.');
       return;
     }
 
-    // Validate passwords match
     if (password !== confirm_password) {
       alert('Passwords do not match!');
       return;
     }
 
-    // Include the password in the payload
     userData.password = password;
-
-    // Call the registerUser function and pass navigate as argument
     await registerUser(userData, navigate);
   };
 
+  
+  
+  
   return (
-   
-    <div className="max-w-4xl max-sm:max-w-lg mx-auto font-[sans-serif] p-6">
-      <div className="text-center mb-12 sm:mb-16">
-        <h4 className="text-white-600 text-base mt-6">Sign up to access the hospital portal</h4>
+    <div className="max-w-4xl mx-auto font-[sans-serif] p-6">
+      <div className="text-center mb-12">
+        <h4 className="text-white-600 text-base mt-6">
+          Sign up to access the hospital portal
+        </h4>
       </div>
       
-      <div className ="container-register">
-      <form>
-        <div className="grid sm:grid-cols-2 gap-6">
-          <div>
-            <label className="text-gray-600 text-sm mb-2 block">First Name</label>
-            <input
-              name="firstName"
-              type="text"
-              className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
-              placeholder="Enter first name"
-              value={formData.firstName}
-              onChange={handleChange}
-            />
+      <div className="container-register">
+        <form>
+          <div className="grid sm:grid-cols-2 gap-6">
+            <div>
+              <label className="text-gray-600 text-sm mb-2 block">First Name</label>
+              <input
+                name="firstName"
+                type="text"
+                className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
+                placeholder="Enter first name"
+                value={formData.firstName}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label className="text-gray-600 text-sm mb-2 block">Surname</label>
+              <input
+                name="surname"
+                type="text"
+                className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
+                placeholder="Surname"
+                value={formData.surname}
+                onChange={handleChange}
+              />
+            </div>
+
+           {/* Profile Picture Selection Grid */}
+<div>
+  <label className="text-gray-600 text-sm mb-2 block">Profile Picture</label>
+  <div className="grid grid-cols-4 gap-4">
+    {getAvailableProfilePictures().map((pic) => (
+      <div key={pic} className="flex flex-col items-center">
+        {/* Clickable Profile Picture */}
+        <img
+          src={`/images/profile-pictures/${pic}`} // Ensure images are in 'public/images/profile-pictures'
+          alt={pic}
+          className={`w-16 h-16 rounded-full border cursor-pointer hover:opacity-80 ${
+            formData.profilePicture === pic ? "ring-4 ring-blue-500" : ""
+          }`}
+          onClick={() => setFormData({ ...formData, profilePicture: pic })}
+        />
+      </div>
+    ))}
+  </div>
+
+  {/* Show Selected Profile Picture */}
+  {formData.profilePicture && (
+    <div className="mt-4">
+      <p className="text-gray-700 text-sm">Selected Picture:</p>
+      <img
+        src={`/images/profile-pictures/${formData.profilePicture}`}
+        alt="Selected Profile Preview"
+        className="w-16 h-16 rounded-full border mt-2"
+      />
+    </div>
+  )}
+
+
+            </div>
           </div>
-          <div>
-            <label className="text-gray-600 text-sm mb-2 block">Surname</label>
-            <input
-              name="surname"
-              type="text"
-              className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
-              placeholder="Surname"
-              value={formData.surname}
-              onChange={handleChange}
-            />
-          </div>
+
           <div>
             <label className="text-gray-600 text-sm mb-2 block">Date of Birth</label>
             <input
@@ -128,6 +184,7 @@ function Register() {
               onChange={handleChange}
             />
           </div>
+
           <div>
             <label className="text-gray-600 text-sm mb-2 block">Hospital Number</label>
             <input
@@ -139,6 +196,7 @@ function Register() {
               onChange={handleChange}
             />
           </div>
+
           <div>
             <label className="text-gray-600 text-sm mb-2 block">Email</label>
             <input
@@ -150,6 +208,7 @@ function Register() {
               onChange={handleChange}
             />
           </div>
+
           <div>
             <label className="text-gray-600 text-sm mb-2 block">Department</label>
             <select
@@ -166,6 +225,8 @@ function Register() {
               ))}
             </select>
           </div>
+
+
           <div>
             <label className="text-gray-600 text-sm mb-2 block">Telephone No.</label>
             <input
@@ -177,6 +238,7 @@ function Register() {
               onChange={handleChange}
             />
           </div>
+
           <div>
             <label className="text-gray-600 text-sm mb-2 block">Password</label>
             <input
@@ -188,6 +250,7 @@ function Register() {
               onChange={handleChange}
             />
           </div>
+          
           <div>
             <label className="text-gray-600 text-sm mb-2 block">Confirm Password</label>
             <input
@@ -199,22 +262,20 @@ function Register() {
               onChange={handleChange}
             />
           </div>
-        </div>
-
      
-       <div className='button-wrapper'>
-          <button
-            type="button"
-            className="submit-register-button"
-            onClick={handleSubmit}
-          >
-            Sign up
-          </button>
-        </div>
-      </form>
+
+          <div className="button-wrapper">
+            <button
+              type="button"
+              className="submit-register-button"
+              onClick={handleSubmit}
+            >
+              Sign up
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-    </div>
-  
   );
 }
 

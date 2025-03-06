@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
 
   console.log("Request Body:", req.body);  // Log the data sent by frontend
 
-  const query = 'SELECT * FROM users WHERE hospital_number = ?';
+  const query = 'SELECT firstName, surname, hospital_number, email, department_id, telephone_number, dob, profile_picture FROM users WHERE hospital_number = ?';
   db.query(query, [hospital_number], async (err, result) => {
     if (err) {
       console.error('Database error:', err);
@@ -61,7 +61,17 @@ router.post('/', (req, res) => {
     const user = result[0];
     console.log("User data from database:", user);  // Log user data from the database
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    if (!user.password) {
+      console.error("Error: User password is NULL or undefined in the database.");
+      return res.status(500).json({ message: "Server error: Password missing" });
+  }
+  console.log("Entered Password:", password);
+console.log("Stored Hashed Password:", user.password);
+
+const isMatch = await bcrypt.compare(password, user.password);
+
+console.log("Password Match Result:", isMatch); // Log if bcrypt comparison is working
+
     console.log("Password match result:", isMatch);  // Log if password matched
 
     if (isMatch) {
