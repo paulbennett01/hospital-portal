@@ -36,5 +36,17 @@
     "dept_map": "day_surgery_map.jpg",
     "dept_img": ["day_surgery_img1.jpg", "day_surgery_img2.jpg", "day_surgery_img3.jpg"],
     "videos": ["FId7wHAd1Cg?si=X28sg4wONarFmS_Z", "FId7wHAd1Cg?si=X28sg4wONarFmS_Z", "FId7wHAd1Cg?si=X28sg4wONarFmS_Z"]
-  }
+  },
+  {
+    "id": 4,
+    "name": "MRI Department",
+    "details": "The MRI Department is a special place where doctors use a big camera called an MRI machine to take detailed pictures of the inside of your body! It helps them understand how your muscles, bones, and organs are doing. The MRI machine looks like a big tunnel, and you’ll lie on a comfy bed that slowly moves inside. Don’t worry—it doesn’t hurt at all! The machine makes some loud sounds, so you might wear special headphones or listen to music. Our friendly doctors and nurses will be there to explain everything and make sure you feel safe and comfortable. After the scan, you can go back to your day just like normal!",
+    "doctor": "Doctor Martinez",
+    "doctor_img": "mri_doctor.jpg",
+    "nurse": "Nurse Thompson",
+    "nurse_img": "mri_nurse.jpg",
+    "dept_map": "mri_map.jpg",
+    "dept_img": ["mri_img1.jpg", "mri_img2.jpg", "mri_img3.jpg"],
+    "videos": ["yOuTuBeViDeO1", "yOuTuBeViDeO2", "yOuTuBeViDeO3"]
+}
 ]
