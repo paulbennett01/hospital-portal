@@ -56,7 +56,7 @@ const Dashboard = ({ handleLogout }) => {
   return (
     <main className="dashboard">
       <div className="welcome-heading">
-        <div className="font-[sans-serif] my-4">
+    <div className="font-[sans-serif] my-4">
           <div className="max-w-5xl max-lg:max-w-2xl mx-auto">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="text-gray-800 text-4xl font-extrabold">
@@ -71,10 +71,33 @@ const Dashboard = ({ handleLogout }) => {
             <div className="personal-details-container">
               <h4 className="personal-details-title">Personal Details</h4>
               <div className="personal-details">
+                  {/* Display Profile Picture */}
+  {userData.profile_picture && (
+    <div className="profile-picture-container">
+      <p className="text-gray-700 text-sm"><strong>Profile Picture:</strong></p>
+      <img
+        src={`/images/profile-pictures/${userData.profile_picture}`} // Ensure images are in 'public/images/profile-pictures/'
+        alt="User Profile"
+        className="w-24 h-24 rounded-full border mt-2"
+      />
+    </div>
+  )}
+
                 <p className="detail-item"><strong>Phone Number:</strong> {userData.telephone_number}</p>
                 <p className="detail-item"><strong>Email Address:</strong> {userData.email}</p>
                 <p className="detail-item"><strong>Date Of Birth:</strong> {formattedDOB}</p>
                 <p className="detail-item"><strong>Age:</strong> {userAge}</p>
+                {/* Display Profile Picture */}
+{userData.profilePicture && (
+  <div className="profile-picture-container">
+    <p className="text-gray-700 text-sm"><strong>Profile Picture:</strong></p>
+    <img
+      src={`/images/profile-pictures/${userData.profilePicture}`} // Ensure images are in 'public/images/profile-pictures/'
+      alt="User Profile"
+      className="w-24 h-24 rounded-full border mt-2"
+    />
+  </div>
+)}
               </div>
 
               <div className="medical-info-container">
