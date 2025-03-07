@@ -26,40 +26,38 @@ db.connect((err) => {
     }
 });
 
-// POST route to handle user registration
 router.post('/', async (req, res) => {
-    // Extract user details from the request body
-    const { firstName, surname, hospital_number, email, department_id, telephone_number, password, dob, profilePicture } = req.body; // Include profilePicture
+    const { firstName, surname, hospital_number, email, department_id, telephone_number, password, dob, profilePicture } = req.body;
+
+    if (!password) {
+        console.error("❌ Error: Password is missing from request body.");
+        return res.status(400).json({ message: "Password is required" });
+    }
 
     try {
-        // Hash the user's password before storing it in the database
-        const hashedPassword = await bcrypt.hash(password, 10); 
-        // 10 is the number of salt rounds (higher values are more secure but slower)
+        console.log("🛠 Original Password Before Hashing:", password); // Log raw password
 
-        // SQL query to insert the user's data into the `users` table
+        const hashedPassword = await bcrypt.hash(password, 10);
+        console.log("🔐 Hashed Password Before Storing:", hashedPassword); // Log hashed password
+
         const query = `
             INSERT INTO users (firstName, surname, hospital_number, email, department_id, telephone_number, password, dob, profile_picture)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         `;
 
-        // Execute the SQL query, passing the user data as parameters to prevent SQL injection
-        db.query(query, [firstName, surname, hospital_number, email, department_id, telephone_number, hashedPassword, dob, profilePicture], (err, result) => {            
+        db.query(query, [firstName, surname, hospital_number, email, department_id, telephone_number, hashedPassword, dob, profilePicture], (err, result) => {
             if (err) {
-                console.error('Error during registration:', err); 
-                // Log the error if the query fails
-                return res.status(500).json({ message: 'Error during registration' }); 
-                // Return a 500 status code with an error message
+                console.error('❌ Error during registration:', err);
+                return res.status(500).json({ message: 'Error during registration' });
             }
-            // Return a success message with a 201 status code if registration is successful
-            res.status(201).json({ message: 'Registration successful!' });
+            res.status(201).json({ message: '✅ Registration successful!' });
         });
     } catch (error) {
-        console.error('Error hashing the password:', error); 
-        // Log an error if password hashing fails
-        return res.status(500).json({ message: 'Error processing password' }); 
-        // Return a 500 status code with an appropriate error message
+        console.error('❌ Error hashing the password:', error);
+        return res.status(500).json({ message: 'Error processing password' });
     }
 });
+
 
 // Export the router
 module.exports = router; 

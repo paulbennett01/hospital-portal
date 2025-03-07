@@ -59,13 +59,9 @@ const Dashboard = ({ handleLogout }) => {
     <div className="font-[sans-serif] my-4">
           <div className="max-w-5xl max-lg:max-w-2xl mx-auto">
             <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-gray-800 text-4xl font-extrabold">
-                Welcome, {userData.FirstName} {userData.surname}!
-                You are: {userAge} years old.
+              <h2 className="welcome-dashboard">
+                Welcome {userData.FirstName} {userData.surname}! You are: {userAge} years old.
               </h2>
-              <p className="text-gray-600 text-sm mt-4 leading-relaxed">
-                Welcome to your hospital portal! We're so happy you're here...
-              </p>
             </div>
 
             <div className="personal-details-container">
@@ -74,15 +70,14 @@ const Dashboard = ({ handleLogout }) => {
                   {/* Display Profile Picture */}
   {userData.profile_picture && (
     <div className="profile-picture-container">
-      <p className="text-gray-700 text-sm"><strong>Profile Picture:</strong></p>
       <img
         src={`/images/profile-pictures/${userData.profile_picture}`} // Ensure images are in 'public/images/profile-pictures/'
         alt="User Profile"
-        className="w-24 h-24 rounded-full border mt-2"
+        className="profile-picture"
       />
     </div>
   )}
-
+                <p className="detail-item"><strong>Full Name:</strong> {userData.FirstName} {userData.surname}</p>
                 <p className="detail-item"><strong>Phone Number:</strong> {userData.telephone_number}</p>
                 <p className="detail-item"><strong>Email Address:</strong> {userData.email}</p>
                 <p className="detail-item"><strong>Date Of Birth:</strong> {formattedDOB}</p>

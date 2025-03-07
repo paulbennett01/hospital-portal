@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
 
   console.log("Request Body:", req.body);  // Log the data sent by frontend
 
-  const query = 'SELECT firstName, surname, hospital_number, email, department_id, telephone_number, dob, profile_picture FROM users WHERE hospital_number = ?';
+  const query = 'SELECT * FROM users WHERE hospital_number = ?';
   db.query(query, [hospital_number], async (err, result) => {
     if (err) {
       console.error('Database error:', err);
