@@ -17,7 +17,11 @@ const getAvailableProfilePictures = () => {
     "lion.webp",
     "motorcycle.webp",
     "plane.webp",
-    "truck.webp"
+    "truck.webp",
+    "princess.webp",
+    "flower.webp",
+    "sunflower.webp"
+
   ]; // Manually list available images in 'src/images/profile-pictures'
 };
 
@@ -116,11 +120,11 @@ function Register() {
         <form>
           <div className="grid sm:grid-cols-2 gap-6">
             <div>
-              <label className="text-gray-600 text-sm mb-2 block">First Name</label>
+              <label className="text-#ffffff-600 text-sm mb-2 block">First Name</label>
               <input
                 name="firstName"
                 type="text"
-                className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
+                className="bg-gray-100 w-full text-black px-4 py-3 rounded focus:bg-transparent outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 placeholder="Enter first name"
                 value={formData.firstName}
                 onChange={handleChange}
@@ -131,31 +135,35 @@ function Register() {
               <input
                 name="surname"
                 type="text"
-                className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
+                className="bg-gray-100 w-full text-black px-4 py-3 rounded focus:bg-transparent outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 placeholder="Surname"
                 value={formData.surname}
                 onChange={handleChange}
               />
             </div>
 
-           {/* Profile Picture Selection Grid */}
+  {/* Profile Picture Selection Grid */}
 <div>
-  <label className="text-gray-600 text-sm mb-2 block">Profile Picture</label>
-  <div className="grid grid-cols-4 gap-4">
-    {getAvailableProfilePictures().map((pic) => (
-      <div key={pic} className="flex flex-col items-center">
-        {/* Clickable Profile Picture */}
-        <img
-          src={`/images/profile-pictures/${pic}`} // Ensure images are in 'public/images/profile-pictures'
-          alt={pic}
-          className={`w-16 h-16 rounded-full border cursor-pointer hover:opacity-80 ${
-            formData.profilePicture === pic ? "ring-4 ring-blue-500" : ""
-          }`}
-          onClick={() => setFormData({ ...formData, profilePicture: pic })}
-        />
-      </div>
-    ))}
+  <label className="text-#fff-600 text-sm mb-2 block">Profile Picture</label>
+  <div className="flex justify-center">
+    <div className="grid grid-cols-4 gap-4">
+      {getAvailableProfilePictures().map((pic) => (
+        <div key={pic} className="flex flex-col items-center">
+          {/* Clickable Profile Picture */}
+          <img
+            src={`/images/profile-pictures/${pic}`} // Ensure images are in 'public/images/profile-pictures'
+            alt={pic}
+            className={`w-16 h-16 rounded-full border cursor-pointer hover:opacity-80 ${
+              formData.profilePicture === pic ? "ring-4 ring-blue-500" : ""
+            }`}
+            onClick={() => setFormData({ ...formData, profilePicture: pic })}
+          />
+        </div>
+      ))}
+    </div>
   </div>
+
+
 
   {/* Show Selected Profile Picture */}
   {formData.profilePicture && (
@@ -178,9 +186,21 @@ function Register() {
             <input
               name="dob"
               type="date"
-              className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
+              className="bg-gray-100 w-full text-black px-4 py-3 rounded focus:bg-transparent outline-none focus:ring-2 focus:ring-blue-500 transition-all"
               placeholder="Enter email"
               value={formData.dob}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div>
+            <label className="text-gray-600 text-sm mb-2 block">Appointment Date:</label>
+            <input
+              name="appointment"
+              type="date"
+              className="bg-gray-100 w-full text-black px-4 py-3 rounded focus:bg-transparent outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+              placeholder="Enter email"
+              value={formData.appointment}
               onChange={handleChange}
             />
           </div>
@@ -190,7 +210,7 @@ function Register() {
             <input
               name="hospital_number"
               type="text"
-              className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
+              className="bg-gray-100 w-full text-black px-4 py-3 rounded focus:bg-transparent outline-none focus:ring-2 focus:ring-blue-500 transition-all"
               placeholder="EG: CHI25121900"
               value={formData.hospital_number}
               onChange={handleChange}
@@ -202,7 +222,7 @@ function Register() {
             <input
               name="email"
               type="email"
-              className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
+              className="bg-gray-100 w-full text-black px-4 py-3 rounded focus:bg-transparent outline-none focus:ring-2 focus:ring-blue-500 transition-all"
               placeholder="Enter email"
               value={formData.email}
               onChange={handleChange}
@@ -213,7 +233,7 @@ function Register() {
             <label className="text-gray-600 text-sm mb-2 block">Department</label>
             <select
               name="department_id"
-              className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
+              className="bg-gray-100 w-full text-black px-4 py-3 rounded focus:bg-transparent outline-none focus:ring-2 focus:ring-blue-500 transition-all"
               value={formData.department_id}
               onChange={handleChange}
             >
@@ -232,7 +252,7 @@ function Register() {
             <input
               name="telephone_number"
               type="number"
-              className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
+              className="bg-gray-100 w-full text-black px-4 py-3 rounded focus:bg-transparent outline-none focus:ring-2 focus:ring-blue-500 transition-all"
               placeholder="Enter mobile number"
               value={formData.telephone_number}
               onChange={handleChange}
@@ -244,7 +264,7 @@ function Register() {
             <input
               name="password"
               type="password"
-              className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
+              className="bg-gray-100 w-full text-black px-4 py-3 rounded focus:bg-transparent outline-none focus:ring-2 focus:ring-blue-500 transition-all"
               placeholder="Enter password"
               value={formData.password}
               onChange={handleChange}
@@ -256,7 +276,7 @@ function Register() {
             <input
               name="confirm_password"
               type="password"
-              className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
+              className="bg-gray-100 w-full text-black px-4 py-3 rounded focus:bg-transparent outline-none focus:ring-2 focus:ring-blue-500 transition-all"
               placeholder="Confirm password"
               value={formData.confirm_password}
               onChange={handleChange}

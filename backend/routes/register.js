@@ -27,12 +27,15 @@ db.connect((err) => {
 });
 
 router.post('/', async (req, res) => {
-    const { firstName, surname, hospital_number, email, department_id, telephone_number, password, dob, profilePicture } = req.body;
+    const { firstName, surname, hospital_number, email, department_id, telephone_number, password, dob, profilePicture, appointment } = req.body;
 
     if (!password) {
         console.error("❌ Error: Password is missing from request body.");
         return res.status(400).json({ message: "Password is required" });
     }
+    
+    const formattedAppointment = appointment ? new Date(appointment).toISOString().split('T')[0] : null;
+
 
     try {
         console.log("🛠 Original Password Before Hashing:", password); // Log raw password
@@ -41,11 +44,11 @@ router.post('/', async (req, res) => {
         console.log("🔐 Hashed Password Before Storing:", hashedPassword); // Log hashed password
 
         const query = `
-            INSERT INTO users (firstName, surname, hospital_number, email, department_id, telephone_number, password, dob, profile_picture)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO users (firstName, surname, hospital_number, email, department_id, telephone_number, password, dob, profile_picture, appointment)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `;
 
-        db.query(query, [firstName, surname, hospital_number, email, department_id, telephone_number, hashedPassword, dob, profilePicture], (err, result) => {
+        db.query(query, [firstName, surname, hospital_number, email, department_id, telephone_number, hashedPassword, dob, profilePicture, formattedAppointment], (err, result) => {
             if (err) {
                 console.error('❌ Error during registration:', err);
                 return res.status(500).json({ message: 'Error during registration' });

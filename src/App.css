@@ -128,7 +128,7 @@ body {
 /* Title for Personal Details */
 .personal-details-title {
   color: #ffffff;
-  font-size: 34px;
+  font-size: 27px;
   font-weight: bold;
   margin-bottom: 12px;
 }
@@ -137,7 +137,7 @@ body {
 .personal-details .detail-item {
   color: #f5f5f5;
   font-size: 17px;
-  margin-bottom: 8px;
+  margin-bottom: 2px;
 }
 
 /* Medical Info Container */
@@ -150,7 +150,7 @@ body {
 /* Medical Info Title */
 .medical-info-title {
   color: #ffffff;
-  font-size: 34px;
+  font-size: 27px;
   font-weight: bold;
   margin-bottom: 8px;
 }
@@ -254,7 +254,7 @@ input[type="password"] {
   border: 10px solid transparent; 
   background-clip: padding-box, border-box;
   background-origin: border-box;
-  background-image: linear-gradient(#17bd1f, #04fff2), 
+  background-image: linear-gradient(#d35502, #982fc2), 
                     linear-gradient(45deg, #d3d606, #093D24);
   position: relative;
   top: 172px;
@@ -414,9 +414,9 @@ font-weight: bold;
   background-origin: border-box;
   background-image: linear-gradient(#9f3838, #132761), linear-gradient(61deg, #d80000a4, #471b81);
   border-radius: 23px;
-  width: 745px;
-  height: 207px;
-  font-size: 18px;
+  width: 710px;
+  height: 106px;
+  font-size: 12px;
   margin: auto;
 }
 
@@ -426,7 +426,7 @@ font-weight: bold;
 }
 
 .profile-picture {
-  width: 12%;
+  width: 7%;
   height: 35%;
   margin: auto;
   border-radius: 362px;
@@ -444,3 +444,54 @@ font-weight: bold;
   color: white;
   text-align: center;
 }
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #f9f9f9;
+}
+
+.backwards {
+  color: white;
+    font-size: 72px;
+    padding-right: 116px;
+
+}
+
+.forwards {
+  color: white;
+    font-size: 72px;
+}
+.departments-slideshow {
+  border-radius: 303px;
+  height: 50%;
+  width: 67%;
+  margin: auto;
+  border: 10px solid transparent; 
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  background-image: linear-gradient(#570ece, #be6c20), 
+                    linear-gradient(45deg, #0023e9, #093D24);
+  position: relative;
+  top: 172px;
+}
+
+.nurse {
+  color: white;
+}
+
+.doctor {
+  color: white;
+}
+.dept-details {
+  color: white;
+}
+.department-name {
+  color: white;
+}
+.explaination {
+  color: white;
+}
+.heading-medical {
+  color: white;
+}  

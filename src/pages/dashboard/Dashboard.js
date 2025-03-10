@@ -45,6 +45,15 @@ const Dashboard = ({ handleLogout }) => {
     return age;
   };
 
+  const formattedAppointment = userData.appointment 
+  ? new Date(userData.appointment).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+  : 'No appointment scheduled';
+
+
   const userAge = calculateAge(userData.dob);
 
   const formattedDOB = new Date(userData.dob).toLocaleDateString('en-US', {
@@ -53,6 +62,9 @@ const Dashboard = ({ handleLogout }) => {
     day: 'numeric',
   });
 
+
+
+
   return (
     <main className="dashboard">
       <div className="welcome-heading">
@@ -60,7 +72,7 @@ const Dashboard = ({ handleLogout }) => {
           <div className="max-w-5xl max-lg:max-w-2xl mx-auto">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="welcome-dashboard">
-                Welcome {userData.FirstName} {userData.surname}! You are: {userAge} years old.
+                Welcome {userData.FirstName} {userData.surname}! We are looking forward to seeing you at your appointment!
               </h2>
             </div>
 
@@ -82,6 +94,8 @@ const Dashboard = ({ handleLogout }) => {
                 <p className="detail-item"><strong>Email Address:</strong> {userData.email}</p>
                 <p className="detail-item"><strong>Date Of Birth:</strong> {formattedDOB}</p>
                 <p className="detail-item"><strong>Age:</strong> {userAge}</p>
+                <p className="detail-item"><strong>Your Scheduled Appointment is:</strong> {formattedAppointment}</p>
+                <p className="detail-item"><strong>Your Medicines: </strong>No Medicines Taken</p>
                 {/* Display Profile Picture */}
 {userData.profilePicture && (
   <div className="profile-picture-container">

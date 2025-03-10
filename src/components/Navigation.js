@@ -47,6 +47,9 @@ const Navigation = ({ isLoggedIn, handleLogout }) => {
                   <Link to="/slideshow" className="link">Medical Events</Link>
                 </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
+                  <Link to="/departments" className="link">Hospital Departments</Link>
+                </li>
+                <li className="max-lg:border-b max-lg:py-3 px-3">
                   <Link to="/games" className="link">Games</Link>
                 </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
