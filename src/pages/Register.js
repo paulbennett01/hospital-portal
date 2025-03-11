@@ -111,7 +111,7 @@ function Register() {
   return (
     <div className="max-w-4xl mx-auto font-[sans-serif] p-6">
       <div className="text-center mb-12">
-        <h4 className="text-white-600 text-base mt-6">
+        <h4 className="sign-up-head">
           Sign up to access the hospital portal
         </h4>
       </div>
@@ -142,19 +142,19 @@ function Register() {
               />
             </div>
 
-  {/* Profile Picture Selection Grid */}
+{/* Profile Picture Selection Grid */}
 <div>
-  <label className="text-#fff-600 text-sm mb-2 block">Profile Picture</label>
-  <div className="flex justify-center">
-    <div className="grid grid-cols-4 gap-4">
+  <label className="profile-picture-label">Profile Picture</label>
+  <div className="profile-pictures-container">
+    <div className="profile-pictures-grid">
       {getAvailableProfilePictures().map((pic) => (
-        <div key={pic} className="flex flex-col items-center">
+        <div key={pic} className="profile-picture-item">
           {/* Clickable Profile Picture */}
           <img
-            src={`/images/profile-pictures/${pic}`} // Ensure images are in 'public/images/profile-pictures'
+            src={`/images/profile-pictures/${pic}`} 
             alt={pic}
-            className={`w-16 h-16 rounded-full border cursor-pointer hover:opacity-80 ${
-              formData.profilePicture === pic ? "ring-4 ring-blue-500" : ""
+            className={`profile-picture-img ${
+              formData.profilePicture === pic ? "profile-picture-selected" : ""
             }`}
             onClick={() => setFormData({ ...formData, profilePicture: pic })}
           />
@@ -162,6 +162,10 @@ function Register() {
       ))}
     </div>
   </div>
+
+
+
+
 
 
 
@@ -176,10 +180,8 @@ function Register() {
       />
     </div>
   )}
-
-
-            </div>
-          </div>
+      </div>
+       </div>
 
           <div>
             <label className="text-gray-600 text-sm mb-2 block">Date of Birth</label>
@@ -191,20 +193,32 @@ function Register() {
               value={formData.dob}
               onChange={handleChange}
             />
-          </div>
-
+          </div>  
+          
           <div>
-            <label className="text-gray-600 text-sm mb-2 block">Appointment Date:</label>
+            <label className="text-gray-600 text-sm mb-2 block">Email</label>
             <input
-              name="appointment"
-              type="date"
+              name="email"
+              type="email"
               className="bg-gray-100 w-full text-black px-4 py-3 rounded focus:bg-transparent outline-none focus:ring-2 focus:ring-blue-500 transition-all"
               placeholder="Enter email"
-              value={formData.appointment}
+              value={formData.email}
               onChange={handleChange}
             />
           </div>
-
+          
+          <div>
+            <label className="text-gray-600 text-sm mb-2 block">Telephone No.</label>
+            <input
+              name="telephone_number"
+              type="number"
+              className="bg-gray-100 w-full text-black px-4 py-3 rounded focus:bg-transparent outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+              placeholder="Enter mobile number"
+              value={formData.telephone_number}
+              onChange={handleChange}
+            />
+          </div>
+          
           <div>
             <label className="text-gray-600 text-sm mb-2 block">Hospital Number</label>
             <input
@@ -217,17 +231,7 @@ function Register() {
             />
           </div>
 
-          <div>
-            <label className="text-gray-600 text-sm mb-2 block">Email</label>
-            <input
-              name="email"
-              type="email"
-              className="bg-gray-100 w-full text-black px-4 py-3 rounded focus:bg-transparent outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-              placeholder="Enter email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </div>
+        
 
           <div>
             <label className="text-gray-600 text-sm mb-2 block">Department</label>
@@ -244,17 +248,16 @@ function Register() {
                 </option>
               ))}
             </select>
-          </div>
-
+          </div >
 
           <div>
-            <label className="text-gray-600 text-sm mb-2 block">Telephone No.</label>
+            <label className="text-gray-600 text-sm mb-2 block">Appointment Date:</label>
             <input
-              name="telephone_number"
-              type="number"
+              name="appointment"
+              type="date"
               className="bg-gray-100 w-full text-black px-4 py-3 rounded focus:bg-transparent outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-              placeholder="Enter mobile number"
-              value={formData.telephone_number}
+              placeholder="Enter email"
+              value={formData.appointment}
               onChange={handleChange}
             />
           </div>

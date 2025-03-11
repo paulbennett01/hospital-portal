@@ -70,7 +70,7 @@ const Dashboard = ({ handleLogout }) => {
       <div className="welcome-heading">
     <div className="font-[sans-serif] my-4">
           <div className="max-w-5xl max-lg:max-w-2xl mx-auto">
-            <div className="max-w-2xl mx-auto text-center">
+            <div className="">
               <h2 className="welcome-dashboard">
                 Welcome {userData.FirstName} {userData.surname}! We are looking forward to seeing you at your appointment!
               </h2>

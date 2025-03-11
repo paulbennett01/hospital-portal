@@ -16,6 +16,7 @@ const Departments = () => {
         "The X-Ray Department is a special place where doctors use amazing machines to take pictures of the inside of your body. These pictures help the doctors see your bones, muscles, and other important parts to figure out what’s making you feel unwell or if you’ve had an injury, like a broken bone. Don’t worry—it’s super quick and doesn’t hurt at all! You’ll stand still or lie down for a moment while the machine takes the picture, kind of like a big camera. It helps the doctors understand what’s happening so they can take the best care of you and help you feel better.",
       doctor: "Doctor Smith",
       nurse: "Nurse Pratchett",
+      video: "https://www.youtube.com/embed/fdwI5AzTDQQ?si=uACzsSngOTjTm8va"
     },
     {
       id: 2,
@@ -25,6 +26,7 @@ const Departments = () => {
         "The Neurology Department is a special place where doctors and nurses help kids who have problems with their brain, nerves, or muscles. Your brain is like a supercomputer that controls your body, helping you think, move, and feel. Sometimes, the brain or nerves don’t work the way they should, and that’s when we step in to help. The doctors here are experts in finding out what’s going on and how to make you feel better. They use special tools, ask lots of questions, and may even show you cool pictures of your brain! Our job is to help you stay healthy and strong so you can keep learning, playing, and having fun.",
       doctor: "Doctor Jones",
       nurse: "Nurse Stevenson",
+      video: "https://www.youtube.com/embed/ndDpjT0_IM0?si=nWEZSRZs6ybbg67x"
     },
     {
       id: 3,
@@ -34,6 +36,7 @@ const Departments = () => {
         "The Day Surgery Department is a special place where kids come to have small medical procedures and then go home on the same day! Our friendly doctors and nurses make sure you feel comfortable and safe before, during, and after your surgery. They use special tools and gentle medicine to help you feel relaxed. You might get to wear a cool hospital gown, and after your procedure, you’ll have time to rest before going home. Our goal is to take great care of you so you can get back to playing and having fun as soon as possible!",
       doctor: "Doctor Andrews",
       nurse: "Nurse Williams",
+      video: "https://www.youtube.com/embed/NlV2zLkOqjI?si=qZh348EaYRBc6RXQ"
     },
     {
       id: 4,
@@ -43,6 +46,7 @@ const Departments = () => {
         "The MRI Department is a special place where doctors use a big camera called an MRI machine to take detailed pictures of the inside of your body! It helps them understand how your muscles, bones, and organs are doing. The MRI machine looks like a big tunnel, and you’ll lie on a comfy bed that slowly moves inside. Don’t worry—it doesn’t hurt at all! The machine makes some loud sounds, so you might wear special headphones or listen to music. Our friendly doctors and nurses will be there to explain everything and make sure you feel safe and comfortable. After the scan, you can go back to your day just like normal!",
       doctor: "Doctor Martinez",
       nurse: "Nurse Thompson",
+      video: "https://www.youtube.com/embed/Q_Pa6KFL1Nw?si=ttqnQdW5-bzp7LiT"
     }
   ];
 
@@ -97,6 +101,15 @@ const Departments = () => {
         <div className="nurse">
           <h3><strong>Nurse:</strong> {DepartmentsSlides[currentIndex].nurse}</h3>
         </div>
+
+        <div className="video">
+        <button
+    className="video-button"
+    onClick={() => window.open(DepartmentsSlides[currentIndex].video, "_blank")}
+  >
+    Here is a short video about this department
+  </button>
+</div>
 
         {/* Navigation Buttons */}
         <div>

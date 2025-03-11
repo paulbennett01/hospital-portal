@@ -440,7 +440,7 @@ font-weight: bold;
 
 .welcome-dashboard {
   font-weight: 800;
-  font-size: 29px;
+  font-size: 21px;
   color: white;
   text-align: center;
 }
@@ -495,3 +495,73 @@ font-weight: bold;
 .heading-medical {
   color: white;
 }  
+
+.profile-picture-label{
+  color: white;
+}
+/* Profile Picture Grid Container */
+.profile-pictures-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Grid for Profile Pictures */
+.profile-pictures-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); /* 8 images per row */
+  row-gap: 8px;
+  column-gap: 51px;
+  justify-content: center;
+}
+
+.profile-picture-img {
+  width: 93px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+
+/* Hover Effect */
+.profile-picture-img:hover {
+  transform: scale(1.1);
+  border: 3px solid blue;
+}
+
+/* Selected Image Effect */
+.profile-picture-selected {
+  border: 3px solid blue;
+}
+
+
+img, video {
+  max-width: 1000%;
+    height: auto;
+}
+
+.sign-up-head {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: white;
+  font-size: 30px;
+}
+
+.video-button {
+  padding: 10px 20px; /* Button padding */
+  background: linear-gradient(to right, #558614, #0e817c); /* Gradient background for the button */
+  border: 7px solid transparent; /* Transparent border to show the gradient border */
+  border-radius: 50px; /* Round the button and border */
+  background-clip: padding-box; /* Ensures the background doesn't overlap with the border */
+  text-align: center;
+  display: block; /* Makes the button block-level for centering */
+  color: white; /* Text color */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer on hover */
+  outline: none; /* Removes focus outline */
+  width: fit-content; /* Ensures the button adjusts to the width of its content */
+  margin: 0 auto; /* Centers the button horizontally within the wrapper */
+  transition: transform 0.3s ease; /* Optional smooth transition effect */
+}
