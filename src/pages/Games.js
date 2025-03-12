@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import hangmanImage from "../images/Hangman.webp"; // Importing the image if inside src/
-import SpotDifferenceImage from "../images/spot-the-difference.webp"; // Importing the image if inside src/
-import GuessWordImage from "../images/guess-word.webp"; // Importing the image if inside src/
-import MusicNote from "../images/MusicNote.webp"; // Importing the image if inside src/
+import SpotDifferenceImage from "../images/games/spot-the-difference.jpg"; // Importing the image if inside src/
+import WordSearchImg from "../images/games/wordsearch.png"; // Importing the image if inside src/
+import colouringBookImg from "../images/games/colouring-book.jpg"; // Importing the image if inside src/
+import HappyFishingImg from "../images/games/happy-fishing.jpg"; // Importing the image if inside src/
+import CrashyCatImg from "../images/games/crashy-cat.jpg"; // Importing the image if inside src/
+
+
 
 
 
@@ -10,35 +14,51 @@ import MusicNote from "../images/MusicNote.webp"; // Importing the image if insi
 const gamesData = [
   {
     id: 1,
+    name: "Wordsearch",
+    details: "",
+    game_img: WordSearchImg, // Using imported image
+    age_restriction: 8,
+    game_url: "https://wordsearch.io/",
+  },
+  {
+    id: 2,
+    name: "Spot the Difference",
+    details: "",
+    game_img: SpotDifferenceImage, // Using imported image
+    age_restriction: 8,
+    game_url: "https://www.spotthedifference.com/",
+  },
+  {
+    id: 3,
     name: "Hangman",
-    details: "Hangman is a game.",
+    details: "",
     game_img: hangmanImage, // Using imported image
     age_restriction: 8,
     game_url: "https://thewordsearch.com/hangman/",
   },
   {
-    id: 2,
-    name: "Spot the difference",
-    details: "Spot the difference is a game",
-    game_img: SpotDifferenceImage, // Using imported image
-    age_restriction: 4,
-    game_url: "https://www.spotthedifference.com/",
-  },
-  {
-    id: 3,
-    name: "Guess the Word",
-    details: "Guess the word is a game",
-    game_img: GuessWordImage,
-    age_restriction: 4,
-    game_url: "https://wordly.org/",
-  },
-  {
     id: 4,
-    name: "Guess the song lyric",
+    name: "Colouring Book",
+    details: "",
+    game_img: colouringBookImg,
+    age_restriction: 4,
+    game_url: "https://kids.poki.com/game/coloring-book",
+  },
+  {
+    id: 5,
+    name: "Happy Fishing",
     details: "Description of the game",
-    game_img: MusicNote,
-    age_restriction: 8,
-    game_url: "https://www.sporcle.com/games/quizzess/guess-the-song-by-the-lyrics",
+    game_img: HappyFishingImg,
+    age_restriction: 4,
+    game_url: "https://kids.poki.com/game/happy-fishing",
+  },
+  {
+    id: 6,
+    name: "Crashy Cat",
+    details: "Description of the game",
+    game_img: CrashyCatImg,
+    age_restriction: 4,
+    game_url: "https://kids.poki.com/game/crashy-cat",
   }
 ];
 
@@ -72,7 +92,7 @@ const Games = () => {
 
   return (
     <div>
-      <h1 className="available-games-heading">Available Games. Your age is {userAge}!</h1>
+      <h1 className="available-games-heading">Here are some games for you to play!</h1>
 
       {userAge === null ? (
         <p>Loading...</p>
